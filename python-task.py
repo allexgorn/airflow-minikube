@@ -13,7 +13,7 @@ def PascalTriangle():
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2024, 8, 21),
+    'start_date': datetime(2024, 8, 23, 8, 44),
     'retries': 1,
     'retry_delay': timedelta(minutes=5),
 }
@@ -22,7 +22,7 @@ dag = DAG(
     'pascal',
     default_args=default_args,
     description='Pascal Triangle',
-    schedule_interval='44 11 * * *',
+    schedule_interval='@daily',
     catchup=False,
 )
 
