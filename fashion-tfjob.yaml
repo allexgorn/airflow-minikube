@@ -1,0 +1,19 @@
+apiVersion: kubeflow.org/v1
+kind: TFJob
+metadata:
+  name: fashion-tf
+spec:
+  tfReplicaSpecs:
+    Worker:
+      replicas: 1
+      restartPolicy: OnFailure
+      template:
+        spec:
+          containers:
+          - name: tensorflow
+            image: allexgorn/fashion-tfjob:latest
+            command: ["python", "/app/modelFashion.py"]
+            resources:
+              limits:
+                memory: "2Gi"
+                cpu: "1"
